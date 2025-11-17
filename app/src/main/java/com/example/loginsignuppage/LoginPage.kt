@@ -2,8 +2,11 @@ package com.example.loginsignuppage
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +14,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -34,6 +39,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun LoginScreen(
@@ -94,7 +102,8 @@ fun LoginScreen(
                     label = { Text("Email") },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = RoundedCornerShape(12.dp),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
                 )
 
                 Spacer(Modifier.height(16.dp))
@@ -105,15 +114,28 @@ fun LoginScreen(
                     label = { Text("Password") },
                     singleLine = true,
                     visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     trailingIcon = {
                         val icon = if (isPasswordVisible) Icons.Default.VisibilityOff else Icons.Default.Visibility
                         val description = if (isPasswordVisible) "Hide password" else "Show password"
                         IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {
                             Icon(imageVector = icon, contentDescription = description)
                         }
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp)
+                    }
+                )
+
+                Spacer(Modifier.height(12.dp))
+
+                Text(
+                    text = "Forgot Password?",
+                    color = Color.Blue,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.clickable(true){
+                        TODO()
+                    }
                 )
 
                 Spacer(Modifier.height(24.dp))
@@ -127,6 +149,29 @@ fun LoginScreen(
                     Text("Log in")
                 }
 
+                Spacer(Modifier.height(12.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Not a user? ",
+                        fontSize = 12.sp,
+                        color = Color.Gray
+                    )
+
+                    Text(
+                        text = "Register now",
+                        fontSize = 12.sp,
+                        color = Color.Blue,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.clickable {
+                            TODO()
+                        }
+                    )
+                }
+
                 Spacer(Modifier.height(24.dp))
 
                 Box(
@@ -135,6 +180,7 @@ fun LoginScreen(
                         .height(1.dp)
                         .background(color = Color.Gray)
                 )
+
             }
         }
     }
