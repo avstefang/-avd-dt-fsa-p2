@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -40,12 +39,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun LoginScreen(
-    onLoginClick: (String, String) -> Unit = { _, _ -> }
+    onLoginClick: (String, String) -> Unit = { _, _ -> },
+    onNavigateToRegister: () -> Unit
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -75,7 +74,6 @@ fun LoginScreen(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_brand_icon),
                     contentDescription = null,
-//                    tint = Color(0xFFA7C0E8),
                     modifier = Modifier.size(64.dp)
                 )
             }
@@ -167,7 +165,7 @@ fun LoginScreen(
                         color = Color.Blue,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.clickable {
-                            TODO()
+                            onNavigateToRegister()
                         }
                     )
                 }
