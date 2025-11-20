@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.PlugPlaySplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_brand_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.Avddtfsap2</item>
+    </style>
+
     <style name="Theme.Avddtfsap2" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
